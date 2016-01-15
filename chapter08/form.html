@@ -5,15 +5,33 @@
 <title>Form Fun</title>
 <link href="../_css/site.css" rel="stylesheet">
 <script src="../_js/jquery.min.js"></script>
+<script src="jquery_validate/jquery.validate.min.js"></script>
 <script>
 $(document).ready(function() {
+	$(':text:first').focus();
+	$('#order').validate();
+	$('#paypal').click(function(){
+		$('#creditCard input').prop('disabled',true).css({'background-color':'#CCC'});
+		$('#creditCard label').css('color','#BBB');
+	});//end click
+	$('#visa,#mastercard').click(function(){
+		$('#creditCard input').prop('disabled',false).css({'background-color':''});
+		$('#creditCard label').css('color','');
+	});//end click
+	$('#hideShip').click(function(){
+		if($(this).prop('checked')){
+			$('#shipping').slideUp('fast');
+		}else{
+			$('#shipping').slideDown('fast');
+		}
 
+	});//end click
 }); // end ready
 </script>
 </head>
 <body>
 <div class="wrapper">
-	<header>
+	<header style="z-index:10">
     JAVASCRIPT <span class="amp">&amp;</span> jQUERY: THE&nbsp;MISSING&nbsp;MANUAL
 	</header>
 	<div class="content">
@@ -24,7 +42,7 @@ $(document).ready(function() {
 					<legend>Billing Information</legend>
 					<div>
 						<label for="name" class="label">Name</label>
-						<input name="name" type="text" id="name" size="36">
+						<input name="name" type="text" id="name" size="36" class="required" title="Please enter your name">
 					</div>
 					<div>
 						<label for="address" class="label">Address</label>
@@ -546,6 +564,7 @@ $(document).ready(function() {
 						</div>
 					</div>
 				</fieldset>
+				<input type="submit" value="Submit" name="submit" id="submit">
 			</form>
 		</div>
 	</div>

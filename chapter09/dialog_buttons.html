@@ -9,7 +9,26 @@
 <script src="../_js/jquery-ui.min.js"></script>
 <script>
 $(document).ready(function() {
-  
+  $('#confirm').dialog({
+  	modal : true,
+  	autoOpen : false,
+  	position : { 
+  		my : 'left top',
+  		at : 'right top',
+  		of : '#robot'},
+  		buttons : {
+  			"Confirm" : function(){
+  				$('#robot').effect('explode');
+  				$(this).dialog('close');
+  			},
+  			"Cancel" : function(){
+  				$(this).dialog('close');
+  			}
+  		}
+  });//end dialog
+  $('#robot').click(function(){
+  	$('#confirm').dialog('open');
+  });//end click
 }); // end ready
 </script>
 </head>
@@ -24,7 +43,9 @@ $(document).ready(function() {
 			<p>Eeek, a robot! Click on the robot to destroy it.</p>
       <p><img src="images/robot.jpg" id="robot"></p>
 			<!-- add dialog here -->
-
+			<div id="confirm" title="Confirm Destruction">
+				<p>Are you sure want to destroy the robot?</p>
+			</div>
 		</div>
 	</div>
 	<footer>
