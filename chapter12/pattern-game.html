@@ -19,7 +19,7 @@ $(document).ready(function() {
    $('#gameContainer').sortable({
     axis : 'x',
     stop : function (event, ui) {
-      if ($(this).sortable("toArray").join('') === answer) {
+      if ($(this).sortable("toArray").join('') == answer) {
         alert('you won!');
         $(this).sortable("disable");
       }

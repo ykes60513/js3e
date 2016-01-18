@@ -10,7 +10,23 @@
 <script src="../_js/jquery-ui.min.js"></script>
 <script>
 $(document).ready(function() {
-  
+  $('#note').draggable({
+  	cursor : 'pointer',
+  	container : 'window',
+  	opacity : 0.5,
+  	drag : function(event,ui){
+  		$('#left').text(ui.position.left);
+  		$('#top').text(ui.position.top);
+  	},
+  	revert : true,
+  	stop : function(event,ui){
+  		$('#visible').css('display','true');
+  	},
+  	start :function(evt,ui){
+  		$('#visible').css('display','none');
+  	}
+
+  });
 }); // end ready
 </script>
 </head>
@@ -26,6 +42,11 @@ $(document).ready(function() {
 		<div id="note">
 			  <h2>You can drag me</h2>
         <p>I'm a note on the page.</p>
+		</div>
+		<span id="left"></span>
+		<span id="top"></span>
+		<div id="visible" style="display:none">
+			This is visible!!
 		</div>
 	</div>
 	<footer>

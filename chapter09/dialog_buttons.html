@@ -29,6 +29,7 @@ $(document).ready(function() {
   $('#robot').click(function(){
   	$('#confirm').dialog('open');
   });//end click
+  $('[title]').tooltip();
 }); // end ready
 </script>
 </head>
@@ -41,7 +42,7 @@ $(document).ready(function() {
 		<div class="main">
 			<h1>Adding buttons to a dialog box</h1>
 			<p>Eeek, a robot! Click on the robot to destroy it.</p>
-      <p><img src="images/robot.jpg" id="robot"></p>
+      <p><img src="images/robot.jpg" id="robot" title="Click the robot"></p>
 			<!-- add dialog here -->
 			<div id="confirm" title="Confirm Destruction">
 				<p>Are you sure want to destroy the robot?</p>
